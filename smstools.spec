@@ -3,11 +3,11 @@
 
 Name:           smstools
 Version:        3.1.14
-Release:        2%{?dist}
+Release:        1
 Summary:        Tools to send and receive short messages through GSM modems or mobile phones
 
 License:        GPLv2+
-Group:          Applications/Communications
+Group:          Communications
 URL:            http://smstools3.kekekasvi.com
 Source0:        http://smstools3.kekekasvi.com/packages/smstools3-%{version}.tar.gz
 Source1 :       smsd.init
