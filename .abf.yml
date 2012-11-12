@@ -1,0 +1,4 @@
+sources:
+  "smsd.init:"	d1fb5ab630de4b7287368e25c1c8bd16279127f2
+  "smsd.logrotate:"	cbbe0fb5e31b61df3ba3fc5da2387f83ecc7471b
+  "smstools3-3.1.14.tar.gz:"	13869519d5659329775e7222c065244c43213921

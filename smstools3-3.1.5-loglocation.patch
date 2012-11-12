@@ -1,0 +1,67 @@
+diff -up smstools3/examples/smsd.conf.easy.loglocation smstools3/examples/smsd.conf.easy
+--- smstools3/examples/smsd.conf.easy.loglocation	2006-02-04 21:52:06.000000000 +0200
++++ smstools3/examples/smsd.conf.easy	2009-10-11 02:21:26.000000000 +0300
+@@ -1,8 +1,12 @@
+ # Example smsd.conf. Read the manual for a description
+ 
+ devices = GSM1
+-logfile = /var/log/smsd.log
++logfile = /var/log/smsd/smsd.log
+ loglevel = 7
++user = smstools
++# 3.1.5 introduced smart logging
++# once your configuration is OK, set log level lower (5 is good in most cases)
++smart_logging = yes
+ 
+ [GSM1]
+ device = /dev/ttyS0
+diff -up smstools3/examples/smsd.conf.full.loglocation smstools3/examples/smsd.conf.full
+--- smstools3/examples/smsd.conf.full.loglocation	2007-05-20 11:58:28.000000000 +0300
++++ smstools3/examples/smsd.conf.full	2009-10-11 02:21:56.000000000 +0300
+@@ -10,8 +10,11 @@ incoming = /var/spool/sms/incoming
+ #report = /var/spool/sms/report
+ #sent = /var/spool/sms/sent
+ #mypath = /usr/local/bin
+-#logfile = /var/log/smsd.log
++#logfile = /var/log/smsd/smsd.log
+ loglevel = 7
++# 3.1.5 introduced smart logging
++# once your configuration is OK, set log level lower (5 is good in most cases)
++smart_logging = yes
+ #alarmhandler = /usr/local/bin/alarmevent
+ alarmlevel = 4
+ delaytime = 10
+@@ -19,7 +22,7 @@ errorsleeptime = 10
+ blocktime = 3600
+ #blockafter = 3
+ #eventhandler = /usr/local/bin/smsevent
+-#stats = /var/log/smsd_stats
++#stats = /var/log/smsd/smsd_stats
+ #stats_interval = 3600
+ #stats_no_zeroes = no
+ #blacklist = /etc/smsd.black
+@@ -33,7 +36,7 @@ autosplit = 3
+ #validity = 255
+ #decode_unicode_text = no
+ #internal_combine = no
+-#user = smsd
++#user = smstools
+ #group = dialout
+ #infofile = /var/run/sms/smsd.working
+ #pidfile = /var/run/sms/smsd.pid
+diff -up smstools3/examples/smsd.conf.non-root.loglocation smstools3/examples/smsd.conf.non-root
+--- smstools3/examples/smsd.conf.non-root.loglocation	2006-11-23 15:28:27.000000000 +0200
++++ smstools3/examples/smsd.conf.non-root	2009-10-11 02:22:13.000000000 +0300
+@@ -1,8 +1,11 @@
+ # Example smsd.conf. Read the manual for a description
+ 
+ devices = GSM1
+-#logfile = /var/log/smsd.log
++#logfile = /var/log/smsd/smsd.log
+ loglevel = 7
++# 3.1.5 introduced smart logging
++# once your configuration is OK, set log level lower (5 is good in most cases)
++smart_logging = yes
+ 
+ # Settings to run smsd without root priviledges:
+ user = user
