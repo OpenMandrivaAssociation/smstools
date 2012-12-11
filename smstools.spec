@@ -117,3 +117,11 @@ fi
 %attr(0640,smstools,smstools) %ghost %{_varlogdir}/smsd_trouble.log
 %attr(0750,smstools,smstools) %dir %{_varlogdir}/smsd_stats
 %attr(0700,smstools,smstools) %dir %{_varrundir}
+
+
+%changelog
+* Wed Nov 30 2011 Alexander Khrukin <akhrukin@mandriva.org> 3.1.14-1
++ Revision: 735822
+- fixes in spec
+- imported package smstools
+

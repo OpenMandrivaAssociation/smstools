@@ -1,0 +1,92 @@
+#!/bin/sh
+#
+# sms          This shell script takes care of starting and stopping
+#              the sms server tools daemon.
+#
+# chkconfig: - 50 50
+# description: sms server tools sends and receives short messages via GSM
+#              
+# processname: smsd
+
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+[ -x /usr/sbin/smsd ] || exit 0
+
+OPTIONS=""
+RETVAL=0
+prog="smsd"
+
+start() {
+        echo -n $"Starting $prog: "
+        if [ $UID -ne 0 ]; then
+                RETVAL=1
+                failure
+        else
+		find /var/spool/sms -name '*.LOCK' -exec rm {} \; > /dev/null 2>&1
+                daemon /usr/sbin/smsd $OPTIONS
+                RETVAL=$?
+                [ $RETVAL -eq 0 ] && touch /var/lock/subsys/smsd
+        fi;
+        echo 
+        return $RETVAL
+}
+
+stop() {
+        echo -n $"Stopping $prog: "
+        if [ $UID -ne 0 ]; then
+                RETVAL=1
+                failure
+        else
+                killproc smsd
+                RETVAL=$?
+                [ $RETVAL -eq 0 ] && rm -f /var/lock/subsys/smsd
+        fi;
+        echo
+        return $RETVAL
+}
+
+reload(){
+        echo -n $"Reloading $prog: "
+        killproc /usr/sbin/smsd -HUP
+        RETVAL=$?
+        echo
+        return $RETVAL
+}
+
+restart(){
+	stop
+	start
+}
+
+condrestart(){
+    [ -e /var/lock/subsys/smsd ] && restart
+    return 0
+}
+
+case "$1" in
+  start)
+	start
+	;;
+  stop)
+	stop
+	;;
+  restart)
+	restart
+        ;;
+  reload)
+	reload
+        ;;
+  condrestart)
+	condrestart
+	;;
+  status)
+        status smsd
+	RETVAL=$?
+        ;;
+  *)
+	echo $"Usage: $0 {start|stop|status|restart|condrestart|reload}"
+	RETVAL=1
+esac
+
+exit $RETVAL
