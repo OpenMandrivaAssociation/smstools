@@ -1,0 +1,9 @@
+[Unit]
+Description=sms server tools sends and receives short messages via GSM
+
+[Service]
+Type=forking
+ExecStart=/usr/sbin/smsd
+
+[Install]
+WantedBy=multi-user.target  
