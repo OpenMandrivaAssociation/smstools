@@ -4,7 +4,7 @@
 Summary:	Tools to send and receive short messages through GSM modems or mobile phones
 Name:		smstools
 Version:	3.1.15
-Release:	2
+Release:	3
 License:	GPLv2+
 Group:		Communications
 Url:		http://smstools3.kekekasvi.com
