@@ -7,7 +7,7 @@ Version:	3.1.15
 Release:	3
 License:	GPLv2+
 Group:		Communications
-Url:		http://smstools3.kekekasvi.com
+Url:		https://smstools3.kekekasvi.com
 Source0:	http://smstools3.kekekasvi.com/packages/smstools3-%{version}.tar.gz
 Source1:	smsd.service
 Source2:	smsd.logrotate
