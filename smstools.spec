@@ -20,6 +20,7 @@ Requires(post): systemd-units
 Requires(preun): systemd-units
 Requires(postun): systemd-units
 
+BuildRequires:	make
 %description
 The SMS Server Tools are made to send and receive short messages through
 GSM modems. It supports easy file interfaces and it can run external
